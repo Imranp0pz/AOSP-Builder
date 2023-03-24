@@ -45,7 +45,7 @@ task:
       - echo "============================"
       - cd ~/work
       - $EXTRA_CMD
-      - sudo mkdir /mnt/ccache && mount --bind ~/.ccache /mnt/ccache
+      - sudo mkdir /mnt/ccache && sudo mount --bind ~/.ccache /mnt/ccache
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
       - export CCACHE_DIR=/mnt/ccache
