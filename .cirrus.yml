@@ -30,6 +30,7 @@ task:
       - echo "============================"
       - mkdir -p ~/work
       - cd ~/work
+      - git config --global user.name "imranpopz" && git config --global user.email "imranpopz32@gmail.com"
       - repo init --depth=1 --no-repo-verify -u $MANIFEST  -g default,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       - git clone $DT_LINK $DT_PATH
@@ -44,8 +45,10 @@ task:
       - echo "============================"
       - cd ~/work
       - $EXTRA_CMD
+      - sudo mkdir /mnt/ccache && mount --bind ~/.ccache /mnt/ccache
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
+      - export CCACHE_DIR=/mnt/ccache
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch "$LUNCH_COMBO"
