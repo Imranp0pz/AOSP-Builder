@@ -15,7 +15,7 @@ task:
   timeout_in: 120m
   container:
       image: ghcr.io/sanju0910/ubuntu:latest
-      cpu: 16
+      cpu: 8
       memory: 32G
 
 
@@ -32,7 +32,7 @@ task:
       - cd ~/work
       - git config --global user.name "imranpopz" && git config --global user.email "imranpopz32@gmail.com"
       - repo init --depth=1 --no-repo-verify -u $MANIFEST  -g default,-mips,-darwin,-notdefault
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j16
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       - git clone $DT_LINK $DT_PATH
       - echo "============================"
       - echo "Syncing Complete!"
@@ -52,7 +52,7 @@ task:
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch "$LUNCH_COMBO"
-      - make -j16 $TARGET
+      - make -j8 $TARGET
      
   Upload_script:
       - echo "============================"
